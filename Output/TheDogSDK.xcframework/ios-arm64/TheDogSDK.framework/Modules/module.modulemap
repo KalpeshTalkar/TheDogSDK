@@ -1,0 +1,11 @@
+framework module TheDogSDK {
+  umbrella header "TheDogSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module TheDogSDK.Swift {
+    header "TheDogSDK-Swift.h"
+    requires objc
+}

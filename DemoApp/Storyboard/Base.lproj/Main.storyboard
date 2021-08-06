@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QSt-oY-lwA">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Breeds View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="BreedsViewController" id="BYZ-38-t0r" customClass="BreedsViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sNU-xz-65u">
+                                <rect key="frame" x="0.0" y="144" width="375" height="668"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search breeds by name..." translatesAutoresizingMaskIntoConstraints="NO" id="I1a-7g-ApB">
+                                <rect key="frame" x="0.0" y="88" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found. Try searching for a different breed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyr-bP-05h">
+                                <rect key="frame" x="30" y="381.66666666666669" width="315" height="49"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="sNU-xz-65u" secondAttribute="bottom" id="0Oe-yN-sPk"/>
+                            <constraint firstItem="I1a-7g-ApB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="A2K-8s-N96"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hyr-bP-05h" secondAttribute="trailing" constant="30" id="LOj-Hu-ncj"/>
+                            <constraint firstItem="I1a-7g-ApB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="V2E-Ym-pOr"/>
+                            <constraint firstItem="hyr-bP-05h" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bZU-wh-lwJ"/>
+                            <constraint firstItem="sNU-xz-65u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bgG-Ip-hnO"/>
+                            <constraint firstItem="sNU-xz-65u" firstAttribute="top" secondItem="I1a-7g-ApB" secondAttribute="bottom" id="i62-Ma-CoY"/>
+                            <constraint firstItem="I1a-7g-ApB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pXW-hm-ztF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sNU-xz-65u" secondAttribute="trailing" id="tIf-9i-x3j"/>
+                            <constraint firstItem="hyr-bP-05h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="xbV-wF-kF6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QBb-mE-Bll">
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="gqC-F7-olH">
+                            <connections>
+                                <action selector="closeButtonTapped" destination="BYZ-38-t0r" id="rfr-H3-gY1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="noDataLabel" destination="hyr-bP-05h" id="i0x-2a-Ysg"/>
+                        <outlet property="searchBar" destination="I1a-7g-ApB" id="Vgz-HG-Pc2"/>
+                        <outlet property="tableView" destination="sNU-xz-65u" id="h2h-Un-SDz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1413.5999999999999" y="685.71428571428578"/>
+        </scene>
+        <!--Breed Images View Controller-->
+        <scene sceneID="ffu-Fo-bSg">
+            <objects>
+                <viewController storyboardIdentifier="BreedImagesViewController" id="22V-mz-yAU" customClass="BreedImagesViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Kp-Ky-nhV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search by breed name..." translatesAutoresizingMaskIntoConstraints="NO" id="TL8-b7-Ydd">
+                                <rect key="frame" x="0.0" y="88" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyd-T1-0v9">
+                                <rect key="frame" x="0.0" y="144" width="375" height="668"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="1" minimumInteritemSpacing="1" id="wab-WC-uqS">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BreedImageCell" id="ubp-rX-yNR" customClass="BreedImageCell" customModule="DemoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bcB-LD-HNM">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KBS-g2-hrE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KBS-g2-hrE" firstAttribute="top" secondItem="bcB-LD-HNM" secondAttribute="top" id="BVr-8g-v9Z"/>
+                                                <constraint firstAttribute="trailing" secondItem="KBS-g2-hrE" secondAttribute="trailing" id="QWN-7b-JoQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="KBS-g2-hrE" secondAttribute="bottom" id="aGS-my-GHm"/>
+                                                <constraint firstItem="KBS-g2-hrE" firstAttribute="leading" secondItem="bcB-LD-HNM" secondAttribute="leading" id="iXN-Q5-y3C"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="breedImageView" destination="KBS-g2-hrE" id="qeZ-V6-uQ8"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="loadingFooter" id="IvK-FL-8b6">
+                                    <rect key="frame" x="0.0" y="100" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="mqq-oF-wy5">
+                                            <rect key="frame" x="177.66666666666666" y="15" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mqq-oF-wy5" firstAttribute="centerY" secondItem="IvK-FL-8b6" secondAttribute="centerY" id="XWQ-Il-251"/>
+                                        <constraint firstItem="mqq-oF-wy5" firstAttribute="centerX" secondItem="IvK-FL-8b6" secondAttribute="centerX" id="szQ-oa-idA"/>
+                                    </constraints>
+                                </collectionReusableView>
+                            </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found. Try searching with a different breed name." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPB-Hi-Biu">
+                                <rect key="frame" x="30" y="381.66666666666669" width="315" height="49"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JQT-dv-0ec"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Eyd-T1-0v9" firstAttribute="trailing" secondItem="JQT-dv-0ec" secondAttribute="trailing" id="27f-1h-lgE"/>
+                            <constraint firstItem="JQT-dv-0ec" firstAttribute="trailing" secondItem="ZPB-Hi-Biu" secondAttribute="trailing" constant="30" id="6xr-2S-FfE"/>
+                            <constraint firstItem="Eyd-T1-0v9" firstAttribute="leading" secondItem="JQT-dv-0ec" secondAttribute="leading" id="RFj-8f-7b6"/>
+                            <constraint firstItem="ZPB-Hi-Biu" firstAttribute="centerY" secondItem="4Kp-Ky-nhV" secondAttribute="centerY" id="RGV-Vx-iKM"/>
+                            <constraint firstItem="TL8-b7-Ydd" firstAttribute="trailing" secondItem="JQT-dv-0ec" secondAttribute="trailing" id="Rd8-ZW-IGf"/>
+                            <constraint firstItem="Eyd-T1-0v9" firstAttribute="top" secondItem="TL8-b7-Ydd" secondAttribute="bottom" id="Tyq-ls-bwg"/>
+                            <constraint firstItem="TL8-b7-Ydd" firstAttribute="leading" secondItem="JQT-dv-0ec" secondAttribute="leading" id="jAc-JH-Tat"/>
+                            <constraint firstItem="ZPB-Hi-Biu" firstAttribute="leading" secondItem="JQT-dv-0ec" secondAttribute="leading" constant="30" id="tbA-cc-Pnq"/>
+                            <constraint firstAttribute="bottom" secondItem="Eyd-T1-0v9" secondAttribute="bottom" id="we7-rU-j3B"/>
+                            <constraint firstItem="TL8-b7-Ydd" firstAttribute="top" secondItem="JQT-dv-0ec" secondAttribute="top" id="x0Z-l1-gkC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SCv-u3-4qe">
+                        <barButtonItem key="rightBarButtonItem" title="Breeds" id="Tiw-wG-2XL">
+                            <connections>
+                                <action selector="breedsButtonTapped" destination="22V-mz-yAU" id="ypH-he-inK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="Eyd-T1-0v9" id="Osd-Yg-QNY"/>
+                        <outlet property="noDataLabel" destination="ZPB-Hi-Biu" id="w0L-ah-74z"/>
+                        <outlet property="searchBar" destination="TL8-b7-Ydd" id="58K-q9-O65"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66U-77-DOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="592.79999999999995" y="685.71428571428578"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8ak-oy-LcV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QSt-oY-lwA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uXl-xY-oaG">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="22V-mz-yAU" kind="relationship" relationship="rootViewController" id="HDb-af-1E5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SxJ-8w-INB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="686"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

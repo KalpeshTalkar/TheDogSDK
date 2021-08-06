@@ -1,0 +1,139 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TheDogSDK
+import Foundation
+import Swift
+@_exported import TheDogSDK
+@_hasMissingDesignatedInitializers public class DogSDK {
+  public static let instance: TheDogSDK.DogSDK
+  public var apiKey: Swift.String
+  public var bundleIdentifier: Swift.String {
+    get
+  }
+  public var infoDictionary: [Swift.String : Any]? {
+    get
+  }
+  public var build: Swift.String? {
+    get
+  }
+  public var version: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public enum SortOrder : Swift.String {
+  case random
+  case ascending
+  case descending
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum BreedImageSize : Swift.String {
+  case thumbnail
+  case small
+  case medium
+  case full
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MimeType : Swift.String {
+  case jpg
+  case png
+  case gif
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct BreedImageParams {
+  public var breed: Swift.String?
+  public var size: TheDogSDK.BreedImageSize
+  public var hasBreeds: Swift.Bool?
+  public var order: TheDogSDK.SortOrder
+  public var page: Swift.Int?
+  public var limit: Swift.Int?
+  public var mimeTypes: Swift.Array<TheDogSDK.MimeType>?
+  public init(page: Swift.Int? = nil, limit: Swift.Int? = nil)
+}
+public struct DogServiceError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var failureReason: Swift.String? {
+    get
+  }
+}
+public struct PaginatedData<T> {
+  public let count: Swift.Int?
+  public let limit: Swift.Int?
+  public let page: Swift.Int?
+  public let data: T?
+  public init(dictionary: [Swift.AnyHashable : Any]? = nil, data: T?)
+}
+public struct BreedImage : Swift.Decodable {
+  public let id: Swift.String
+  public let url: Swift.String?
+  public let height: Swift.Int
+  public let width: Swift.Int
+  public let breeds: Swift.Array<TheDogSDK.Breed>?
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Breed : Swift.Decodable {
+  public let id: Swift.Int
+  public let name: Swift.String
+  public let description: Swift.String?
+  public let history: Swift.String?
+  public let lifeSpan: Swift.String?
+  public let temperament: Swift.String?
+  public let origin: Swift.String?
+  public let breedGroup: Swift.String?
+  public let bredFor: Swift.String?
+  public let referenceImageId: Swift.String?
+  public let image: TheDogSDK.BreedImage?
+  public let height: TheDogSDK.BreedMeasurement?
+  public let weight: TheDogSDK.BreedMeasurement?
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class DogSDKService {
+  public static let `default`: TheDogSDK.DogSDKService
+  public func searchImages(params: TheDogSDK.BreedImageParams, completion: @escaping ((TheDogSDK.PaginatedData<[TheDogSDK.BreedImage]>?, TheDogSDK.DogServiceError?) -> Swift.Void))
+  public func getAllBreeds(page: Swift.Int?, limit: Swift.Int?, completion: @escaping ((TheDogSDK.PaginatedData<[TheDogSDK.Breed]>?, TheDogSDK.DogServiceError?) -> Swift.Void))
+  public func searchBreeds(breedName: Swift.String, page: Swift.Int?, limit: Swift.Int?, completion: @escaping ((TheDogSDK.PaginatedData<[TheDogSDK.Breed]>?, TheDogSDK.DogServiceError?) -> Swift.Void))
+  @objc deinit
+}
+public enum HTTPRequestMethod : Swift.String {
+  case get
+  case post
+  case put
+  case delete
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public let DogService: TheDogSDK.DogSDKService
+public struct BreedMeasurement : Swift.Decodable {
+  public let imperial: Swift.String?
+  public let metric: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+}
+extension TheDogSDK.SortOrder : Swift.Equatable {}
+extension TheDogSDK.SortOrder : Swift.Hashable {}
+extension TheDogSDK.SortOrder : Swift.RawRepresentable {}
+extension TheDogSDK.BreedImageSize : Swift.Equatable {}
+extension TheDogSDK.BreedImageSize : Swift.Hashable {}
+extension TheDogSDK.BreedImageSize : Swift.RawRepresentable {}
+extension TheDogSDK.MimeType : Swift.Equatable {}
+extension TheDogSDK.MimeType : Swift.Hashable {}
+extension TheDogSDK.MimeType : Swift.RawRepresentable {}
+extension TheDogSDK.HTTPRequestMethod : Swift.Equatable {}
+extension TheDogSDK.HTTPRequestMethod : Swift.Hashable {}
+extension TheDogSDK.HTTPRequestMethod : Swift.RawRepresentable {}
