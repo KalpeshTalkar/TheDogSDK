@@ -40,7 +40,7 @@ jobs:
             "connection_id": "1690412195747202634"
           }' \
           https://api.telnyx.com/v2/telephony_credentials
-          echo '${{ steps.ondemand_creds.outputs.response }}'
+          echo 'Credentials response: ${{ steps.ondemand_creds.outputs.response }}'
           
       - name: Token
         id: generate_token
@@ -50,14 +50,15 @@ jobs:
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
           --data '{}' \
-          https://api.telnyx.com/v2/telephony_credentials/${{ steps.generate_token.outputs.response }}/token
-          echo '${{ steps.generate_token.outputs.response }}'
+          https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.generate_token.outputs.response).data.id }}/token
+          echo 'Token response: ${{ steps.generate_token.outputs.response }}'
+          echo 'Credentials id: ${{ fromJson(steps.generate_token.outputs.response).data.id }}'
         
       - name: Test
         run: |
           xcodebuild \
-          -project TelnyxRTC.xcworkspace \
-          -scheme TelnyxRTC \
+          -project TheDogSDK.xcodeproj \
+          -scheme TheDogSDK \
           -sdk iphonesimulator \
           -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' \
           test
