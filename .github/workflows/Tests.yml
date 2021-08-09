@@ -54,12 +54,11 @@ jobs:
           --url "https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token")"
           echo "::debug::Token response: ${{ steps.generate_token.outputs.response }}"
         
-      - name: Test
-        run: |
-          xcodebuild \
-          -project TheDogSDK.xcodeproj \
-          -scheme DemoApp \
-          -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' \
-          test
-    
+      #- name: Test
+      #  run: |
+      #    xcodebuild \
+      #    -project TheDogSDK.xcodeproj \
+      #    -scheme DemoApp \
+      #    -sdk iphonesimulator \
+      #    -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' \
+      #    test
