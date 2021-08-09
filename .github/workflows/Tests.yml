@@ -17,10 +17,10 @@ jobs:
         TELNYX_SIP_CONNECTION_ID: ${{ secrets.TELNYX_SIP_CONNECTION_ID }}
         TELNYX_API_KEY: ${{ secrets.TELNYX_SIP_API_KEY }}
     
-    strategy:
-      matrix:
-        destination: ['platform=iOS Simulator,OS=14.0,name=iPhone 12']
-        xcode: ['/Applications/Xcode_12.5.1.app/Contents/Developer']
+    #strategy:
+    #  matrix:
+    #    destination: ['platform=iOS Simulator,OS=14.0,name=iPhone 12']
+    #    xcode: ['/Applications/Xcode_12.5.1.app/Contents/Developer']
     
     steps:
       #- name: Checkout
