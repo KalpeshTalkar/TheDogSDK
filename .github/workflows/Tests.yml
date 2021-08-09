@@ -1,0 +1,38 @@
+name: Tests
+
+# This workflow is triggered on pull requets to main branch (branches mentioned below)
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main, WEBRTC-* ]
+  
+jobs:
+  test:
+    name: Unit Tests
+    runs-on: macOS-latest
+    
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,OS=14.0,name=iPhone 12']
+        xcode: ['/Applications/Xcode_12.5.1.app/Contents/Developer']
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        
+      #- name: Bundle install
+      #  run: bundle install
+        
+      - name: Pod install
+        run: pod install
+        
+      - name: Test
+        run: |
+          xcodebuild \
+          -project TelnyxRTC.xcworkspace \
+          -scheme TelnyxRTC \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' \
+          test
+    
