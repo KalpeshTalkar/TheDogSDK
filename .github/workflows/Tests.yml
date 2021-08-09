@@ -32,7 +32,7 @@ jobs:
       - name: On-demand Credentials
         id: ondemand_creds
         run: |
-          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+          echo 'Generating creds'
           curl -X POST \
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
@@ -40,18 +40,18 @@ jobs:
             "connection_id": "1690412195747202634"
           }' \
           https://api.telnyx.com/v2/telephony_credentials
-          echo 'EOF' >> $GITHUB_ENV
+          echo '${{ steps.ondemand_creds.outputs.response }}'
           
       - name: Token
         id: generate_token
         run: |
-          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+          echo 'Generating token'
           curl -X POST \
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
           --data '{}' \
           https://api.telnyx.com/v2/telephony_credentials/${{ $GITHUB_ENV }}/token
-          echo 'EOF' >> $GITHUB_ENV
+          echo '${{ steps.generate_token.outputs.response }}'
         
       - name: Test
         run: |
