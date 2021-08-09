@@ -31,22 +31,27 @@ jobs:
       
       - name: On-demand Credentials
         id: ondemand_creds
+        env:
+          TELNYX_SIP_CONNECTION_ID: ${{ secrets.TELNYX_CONNECTION_ID }}
+          TELNYX_API_KEY: ${{ secrets.TELNYX_API_KEY }}
         run: |
           echo "::set-output name=response::$(curl -X POST \
           --header "Content-Type: application/json" \
-          --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
+          --header "Authorization: Bearer $TELNYX_API_KEY" \
           --data '{
-            "connection_id": "1690412195747202634"
+            "connection_id": "$TELNYX_SIP_CONNECTION_ID"
           }' \
           --url 'https://api.telnyx.com/v2/telephony_credentials')"
           echo "::debug::Creds response: ${{ steps.ondemand_creds.outputs.response }}"
           
       - name: Token
         id: generate_token
+        env:
+          TELNYX_API_KEY: ${{ secrets.TELNYX_API_KEY }}
         run: |
           echo "::set-output name=response::$(curl -X POST \
           --header "Content-Type: application/json" \
-          --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
+          --header "Authorization: Bearer $TELNYX_API_KEY" \
           --data '{}' \
           --url "https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token")"
           echo "::debug::Token response: ${{ steps.generate_token.outputs.response }}"
