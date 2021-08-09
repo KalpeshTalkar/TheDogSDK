@@ -39,7 +39,7 @@ jobs:
             "connection_id": "1690412195747202634"
           }' \
           --url 'https://api.telnyx.com/v2/telephony_credentials')"
-          echo "${{ steps.ondemand_creds.outputs.response }}"
+          echo "Creds response: ${{ steps.ondemand_creds.outputs.response }}"
           
       - name: Token
         id: generate_token
@@ -49,7 +49,7 @@ jobs:
           --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
           --data '{}' \
           --url 'https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token')"
-          echo 'Token response: ${{ steps.generate_token.outputs.response }}'
+          echo "Token response: ${{ steps.generate_token.outputs.response }}"
         
       - name: Test
         run: |
