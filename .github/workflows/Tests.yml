@@ -33,7 +33,7 @@ jobs:
       #  run: pod install
       
       - name: Print
-        run: echo "API Key :- $env.TELNYX_API_KEY} | Connection ID :- $env.TELNYX_SIP_CONNECTION_ID"
+        run: echo "API Key :- $TELNYX_API_KEY | Connection ID :- $TELNYX_SIP_CONNECTION_ID"
       
       - name: On-demand Credentials
         id: ondemand_creds
