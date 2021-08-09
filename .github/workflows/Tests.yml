@@ -13,6 +13,9 @@ jobs:
   test:
     name: Unit Tests
     runs-on: macOS-latest
+    env:
+        TELNYX_SIP_CONNECTION_ID: ${{ secrets.TELNYX_SIP_CONNECTION_ID }}
+        TELNYX_API_KEY: ${{ secrets.TELNYX_SIP_API_KEY }}
     
     strategy:
       matrix:
@@ -31,9 +34,6 @@ jobs:
       
       - name: On-demand Credentials
         id: ondemand_creds
-        env:
-          TELNYX_SIP_CONNECTION_ID: ${{ secrets.TELNYX_SIP_CONNECTION_ID }}
-          TELNYX_API_KEY: ${{ secrets.TELNYX_SIP_API_KEY }}
         run: |
           echo "::set-output name=response::$(curl -X POST \
           --header "Content-Type: application/json" \
@@ -46,8 +46,6 @@ jobs:
           
       - name: Token
         id: generate_token
-        env:
-          TELNYX_API_KEY: ${{ secrets.TELNYX_SIP_API_KEY }}
         run: |
           echo "::set-output name=response::$(curl -X POST \
           --header "Content-Type: application/json" \
