@@ -44,7 +44,7 @@ jobs:
       - name: Token
         id: generate_token
         run: |
-          echo "::set-output name=response::$(token=`curl -X POST \
+          echo "::set-output name=response::$(curl -X POST \
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
           --data '{}' \
