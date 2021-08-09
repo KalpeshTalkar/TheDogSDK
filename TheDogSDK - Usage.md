@@ -1,4 +1,4 @@
-# Welcome to TheDogSDK!
+# 👋🏻 Welcome to TheDogSDK!
 
 ##  An open, free, read & write API all about Dogs
 A public service API all about Dogs, free to use when making your fancy new iOS App. 
