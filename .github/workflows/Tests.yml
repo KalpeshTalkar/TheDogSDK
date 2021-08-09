@@ -40,7 +40,7 @@ jobs:
             "connection_id": "1690412195747202634"
           }' \
           https://api.telnyx.com/v2/telephony_credentials
-          echo 'Credentials response: ${{ steps.ondemand_creds.outputs.response }}'
+          echo 'Credentials response: ${{ steps.ondemand_creds.outputs }}'
           
       - name: Token
         id: generate_token
