@@ -2,6 +2,8 @@ name: Tests
 
 # This workflow is triggered on pull requets to main branch (branches mentioned below)
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
@@ -18,14 +20,38 @@ jobs:
         xcode: ['/Applications/Xcode_12.5.1.app/Contents/Developer']
     
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      #- name: Checkout
+      #  uses: actions/checkout@v1
         
       #- name: Bundle install
       #  run: bundle install
         
-      - name: Pod install
-        run: pod install
+      #- name: Pod install
+      #  run: pod install
+      
+      - name: On-demand Credentials
+        id: ondemand_creds
+        run: |
+          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+          curl -X POST \
+          --header "Content-Type: application/json" \
+          --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
+          --data '{
+            "connection_id": "1690412195747202634"
+          }' \
+          https://api.telnyx.com/v2/telephony_credentials
+          echo 'EOF' >> $GITHUB_ENV
+          
+      - name: Token
+        id: generate_token
+        run: |
+          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+          curl -X POST \
+          --header "Content-Type: application/json" \
+          --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
+          --data '{}' \
+          https://api.telnyx.com/v2/telephony_credentials/${{ $GITHUB_ENV }}/token
+          echo 'EOF' >> $GITHUB_ENV
         
       - name: Test
         run: |
