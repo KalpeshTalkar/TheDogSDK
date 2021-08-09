@@ -32,7 +32,7 @@ jobs:
       - name: On-demand Credentials
         id: ondemand_creds
         run: |
-          creds = `curl -X POST \
+          creds=`curl -X POST \
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
           --data '{
@@ -45,14 +45,14 @@ jobs:
       - name: Token
         id: generate_token
         run: |
-          echo 'Generating token'
-          token = `curl -X POST \
+          echo 'Generating token for id: ${{ steps.ondemand_creds.outputs.response }}'
+          token=`curl -X POST \
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer KEY017AEC14FD7AD6CD8FCBF2F23D80DA59_8PNJjealo3EDelUwLl7pfH" \
           --data '{}' \
           --url 'https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token'`
           echo "::set-output name=response::$token"
-          echo 'Token response: ${{ $token }}'
+          echo 'Token response: ${{ token }}'
         
       - name: Test
         run: |
