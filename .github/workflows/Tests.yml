@@ -38,15 +38,14 @@ jobs:
       - name: On-demand Credentials
         id: ondemand_creds
         run: |
-          CODE=`curl -X POST \
+          curl -X POST \
           --header 'Content-Type: application/json' \
           --header 'Authorization: Bearer ${{ env.TELNYX_API_KEY }}' \
           --data '{
             "connection_id": ${{ env.TELNYX_SIP_CONNECTION_ID }}
           }' \
-          --url "https://api.telnyx.com/v2/telephony_credentials"`
-          echo "Creds response - ${{ CODE }}" 
-          echo ${{ steps.ondemand_creds.outputs.response }}
+          --url https://api.telnyx.com/v2/telephony_credentials
+#          echo ${{ steps.ondemand_creds.outputs.response }}
           
 #          echo "::set-output name=response::$(curl -X POST \
 #          --header 'Content-Type: application/json' \
