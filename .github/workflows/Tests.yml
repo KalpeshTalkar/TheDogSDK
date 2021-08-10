@@ -15,7 +15,7 @@ jobs:
     runs-on: macOS-latest
     env:
         TELNYX_SIP_CONNECTION_ID: ${{ secrets.TELNYX_SIP_CONNECTION_ID }}
-        TELNYX_API_KEY: ${{ secrets.TELNYX_SIP_API_KEY }}
+        TELNYX_SIP_API_KEY: ${{ secrets.TELNYX_SIP_API_KEY }}
     
     #strategy:
     #  matrix:
@@ -37,15 +37,15 @@ jobs:
       
       - name: On-demand Credentials
         id: ondemand_creds
-        run: |
-          curl -X POST \
-          --header 'Content-Type: application/json' \
-          --header 'Authorization: Bearer ${{ env.TELNYX_API_KEY }}' \
+        run: |  
+          echo "::set-output name=response::$(curl -X POST \
+          --header "Content-Type: application/json" \
+          --header "Authorization: Bearer $TELNYX_SIP_API_KEY" \
           --data '{
-            "connection_id": "1699407967536809579"
+              "connection_id": "${{ TELNYX_SIP_CONNECTION_ID }}"
           }' \
-          --url https://api.telnyx.com/v2/telephony_credentials
-#          echo ${{ steps.ondemand_creds.outputs.response }}
+          https://api.telnyx.com/v2/telephony_credentials)"          
+          echo ${{ steps.ondemand_creds.outputs.response }}
           
 #          echo "::set-output name=response::$(curl -X POST \
 #          --header 'Content-Type: application/json' \
@@ -62,7 +62,7 @@ jobs:
         run: |
           echo "::set-output name=response::$(curl -X POST \
           --header "Content-Type: application/json" \
-          --header "Authorization: Bearer $TELNYX_API_KEY" \
+          --header "Authorization: Bearer $TELNYX_SIP_API_KEY" \
           --data '{}' \
           --url "https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token")"
           echo "Token response - "
