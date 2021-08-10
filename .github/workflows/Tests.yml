@@ -42,10 +42,11 @@ jobs:
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer $TELNYX_API_KEY" \
           --data '{
-            "connection_id": ${{ secrets.TELNYX_SIP_CONNECTION_ID }}
+            "connection_id": ${{ TELNYX_SIP_CONNECTION_ID }}
           }' \
           --url 'https://api.telnyx.com/v2/telephony_credentials')"
-          echo "::debug::Creds response: ${{ steps.ondemand_creds.outputs.response }}"
+          echo "Creds response - " 
+          echo ${{ steps.ondemand_creds.outputs.response }}
           
       - name: Token
         id: generate_token
@@ -55,7 +56,8 @@ jobs:
           --header "Authorization: Bearer $TELNYX_API_KEY" \
           --data '{}' \
           --url "https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token")"
-          echo "::debug::Token response: ${{ steps.generate_token.outputs.response }}"
+          echo "Token response - "
+          echo ${{ steps.generate_token.outputs.response }}
         
       #- name: Test
       #  run: |
