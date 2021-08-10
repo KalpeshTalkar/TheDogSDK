@@ -39,12 +39,12 @@ jobs:
         id: ondemand_creds
         run: |
           echo "::set-output name=response::$(curl -X POST \
-          --header "Content-Type: application/json" \
-          --header "Authorization: Bearer $TELNYX_API_KEY" \
+          --header 'Content-Type: application/json' \
+          --header 'Authorization: Bearer ${{ env.TELNYX_API_KEY }}' \
           --data '{
             "connection_id": ${{ env.TELNYX_SIP_CONNECTION_ID }}
           }' \
-          --url 'https://api.telnyx.com/v2/telephony_credentials')"
+          --url https://api.telnyx.com/v2/telephony_credentials)"
           echo "Creds response - " 
           echo ${{ steps.ondemand_creds.outputs.response }}
           
@@ -55,7 +55,7 @@ jobs:
           --header "Content-Type: application/json" \
           --header "Authorization: Bearer $TELNYX_API_KEY" \
           --data '{}' \
-          --url "https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token")"
+          --url https://api.telnyx.com/v2/telephony_credentials/${{ fromJson(steps.ondemand_creds.outputs.response).data.id }}/token)"
           echo "Token response - "
           echo ${{ steps.generate_token.outputs.response }}
         
