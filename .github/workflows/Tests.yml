@@ -45,7 +45,7 @@ jobs:
             "connection_id": ${{ env.TELNYX_SIP_CONNECTION_ID }}
           }' \
           --url "https://api.telnyx.com/v2/telephony_credentials"`
-          echo "Creds response - ${{ response }}" 
+          echo "Creds response - ${{ CODE }}" 
           echo ${{ steps.ondemand_creds.outputs.response }}
           
 #          echo "::set-output name=response::$(curl -X POST \
