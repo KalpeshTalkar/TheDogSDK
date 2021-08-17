@@ -9,7 +9,7 @@ This CocoaPods library helps you integrate dogs api in your iOS apps.
                    DESC
 
   spec.homepage     = "https://github.com/KalpeshTalkar"
-  # spec.license      = { :type => "MIT", :file => "LICENSE" }
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author       = { "Kalpesh" => "kalpeshtalkar@gmail.com" }
 
   spec.ios.deployment_target = "13.0"
