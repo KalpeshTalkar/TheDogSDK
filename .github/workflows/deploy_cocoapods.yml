@@ -1,0 +1,29 @@
+# This is a basic workflow to push a new release on Cocoapods.
+# This workflow requires a manual trigger to push a release on Cocoapods.
+
+name: Cocopods Publish
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: macOS-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Pod lint
+        run: pod lib lint
+
+      # Runs a set of commands using the runners shell
+      - name: Publish to Cocoapods
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+        run: |
+          pod trunk push TheDogSDK.podspec
