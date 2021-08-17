@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
 This CocoaPods library helps you integrate dogs api in your iOS apps.
                    DESC
 
-  spec.homepage     = "https://github.com/KalpeshTalkar"
+  spec.homepage     = "https://github.com/KalpeshTalkar/TheDogSDK"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author       = { "Kalpesh" => "kalpeshtalkar@gmail.com" }
 
