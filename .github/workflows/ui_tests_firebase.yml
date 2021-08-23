@@ -26,14 +26,14 @@ jobs:
         
       - name: Build project for test
         run: |
-          xcodebuild -workspace TelnyxVideo.xcworkspace \
-          -scheme TelnyxVideoUITests \
+          xcodebuild -project TheDogSDK.xcodeproj \
+          -scheme DemoAppUITests \
           -derivedDataPath Test\ Output \
           -sdk iphoneos build-for-testing
           
       - name: Zip
         run: |
-          cd Test\ Output/Build/Products && zip -r TelnyxVideoUITests.zip Debug-iphoneos TelnyxVideoUITests_iphoneos14.5-arm64.xctestrun
+          cd Test\ Output/Build/Products && zip -r DemoUITests.zip Debug-iphoneos DemoAppUITests_iphoneos14.5-arm64.xctestrun
 
       - name: GCloud Auth
         uses: google-github-actions/setup-gcloud@master
