@@ -31,6 +31,14 @@ jobs:
           -derivedDataPath Test\ Output \
           -sdk iphonesimulator build-for-testing
           
+      - name: Contents
+        run: |
+          cd Test\ Output/Build/Products && ls -l
+          
+          
+      - name: PWD
+        run: pwd
+          
       - name: Zip
         run: |
           cd Test\ Output/Build/Products && zip -r DemoUITests.zip Debug-iphoneos DemoAppUITests_iphoneos14.5-arm64.xctestrun
