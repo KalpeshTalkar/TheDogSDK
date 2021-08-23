@@ -13,14 +13,13 @@ jobs:
 
   firebase:
     name: Run UI tests with Firebase Test Lab
-#     needs: apk
     runs-on: macOS-latest
 
     steps:
       - uses: actions/checkout@v2
       
-      - name: Bundle install
-        run: bundle install
+#       - name: Bundle install
+#         run: bundle install
       
 #       - name: Install pods
 #         run: pod install
