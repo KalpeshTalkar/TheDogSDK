@@ -29,7 +29,7 @@ jobs:
           xcodebuild -project TheDogSDK.xcodeproj \
           -scheme DemoAppUITests \
           -derivedDataPath Test\ Output \
-          -sdk iphoneos build-for-testing
+          -sdk iphonesimulator build-for-testing
           
       - name: Zip
         run: |
