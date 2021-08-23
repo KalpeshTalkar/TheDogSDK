@@ -41,7 +41,7 @@ jobs:
           
       - name: Zip
         run: |
-          cd Test\ Output/Build/Products && zip -r DemoUITests.zip Debug-iphoneos DemoAppUITests_iphoneos14.5-arm64.xctestrun
+          cd Test\ Output/Build/Products && zip -r DemoUITests.zip Debug-iphonesimulator DemoAppUITests_iphonesimulator14.4-arm64-x86_64.xctestrun
 
       - name: GCloud Auth
         uses: google-github-actions/setup-gcloud@master
