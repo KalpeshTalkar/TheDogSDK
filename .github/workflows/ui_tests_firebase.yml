@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: UI Tests on Firebase Test Lab
+
+# Controls when the workflow will run
+on:
+#   push:
+#     branches: [ main ]
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  firebase:
+    name: Run UI tests with Firebase Test Lab
+#     needs: apk
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Bundle install
+        run: bundle install
+      
+#       - name: Install pods
+#         run: pod install
+        
+      - name: Build project for test
+        run: |
+          xcodebuild -workspace TelnyxVideo.xcworkspace \
+          -scheme TelnyxVideoUITests \
+          -derivedDataPath Test\ Output \
+          -sdk iphoneos build-for-testing
+          
+      - name: Zip
+        run: |
+          cd Test\ Output/Build/Products && zip -r TelnyxVideoUITests.zip Debug-iphoneos TelnyxVideoUITests_iphoneos14.5-arm64.xctestrun
+
+      - name: GCloud Auth
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+
+#       - name: Current project
+#         run: gcloud config set project ${{ secrets.FIREBASE_PROJECT_ID }}
+
+      - name: Run UI tests in Firebase Test Lab
+        run: |
+          gcloud firebase test ios run --test TelnyxVideoUITests.zip \
+          --device model=iphonexr,version=13.2,orientation=portrait \
+          --device model=iphonexsmax,version=12.1,orientation=portrait \
+          --device model=iphone7plus,version=14.1,orientation=portrait \
+          --xcode-version=12.5
+          
