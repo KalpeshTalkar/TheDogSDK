@@ -59,8 +59,9 @@ jobs:
       - name: Run UI tests in Firebase Test Lab
         run: |
           gcloud firebase test ios run --test Test\ Output/Build/Products/TelnyxVideoUITests.zip \
-          --device model=iphonexr,version=13.2,orientation=portrait \
-          --device model=iphonexsmax,version=12.1,orientation=portrait \
-          --device model=iphone7plus,version=14.1,orientation=portrait \
           --xcode-version=12.5
+#          --device model=iphonexr,version=13.2,orientation=portrait \
+#          --device model=iphonexsmax,version=12.1,orientation=portrait \
+#          --device model=iphone7plus,version=14.1,orientation=portrait \
+#          --xcode-version=12.5
           
