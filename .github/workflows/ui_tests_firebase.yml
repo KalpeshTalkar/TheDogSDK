@@ -29,8 +29,9 @@ jobs:
           xcodebuild -project TheDogSDK.xcodeproj \
           -scheme DemoAppUITests \
           -derivedDataPath Test\ Output \
-          -sdk iphonesimulator build-for-testing
-#         -sdk iphoneos build-for-testing
+          -sdk iphoneos build-for-testing
+          -allowProvisioningUpdates
+#          -sdk iphonesimulator build-for-testing
           
       - name: Contents
         run: |
