@@ -29,10 +29,10 @@ jobs:
           xcodebuild -project TheDogSDK.xcodeproj \
           -scheme DemoAppUITests \
           -derivedDataPath Test\ Output \
-          -sdk iphoneos build-for-testing
-          -allowProvisioningUpdates \
-          CODE_SIGN_STYLE="Automatic"
-#          -sdk iphonesimulator build-for-testing
+          -sdk iphonesimulator build-for-testing
+#          -sdk iphoneos build-for-testing
+#          -allowProvisioningUpdates \
+#          CODE_SIGN_STYLE="Automatic"
           
       - name: Contents
         run: |
