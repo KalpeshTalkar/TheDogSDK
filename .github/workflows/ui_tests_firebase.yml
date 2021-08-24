@@ -30,6 +30,7 @@ jobs:
           -scheme DemoAppUITests \
           -derivedDataPath Test\ Output \
           -sdk iphonesimulator build-for-testing
+#         -sdk iphoneos build-for-testing
           
       - name: Contents
         run: |
@@ -41,7 +42,8 @@ jobs:
           
       - name: Zip
         run: |
-          cd Test\ Output/Build/Products && zip -r DemoUITests.zip Debug-iphonesimulator DemoAppUITests_iphonesimulator14.4-arm64-x86_64.xctestrun
+          cd Test\ Output/Build/Products && zip -r TelnyxVideoUITests.zip *
+#          cd Test\ Output/Build/Products && zip -r DemoUITests.zip Debug-iphonesimulator DemoAppUITests_iphonesimulator14.4-arm64-x86_64.xctestrun
 
       - name: GCloud Auth
         uses: google-github-actions/setup-gcloud@master
