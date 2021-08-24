@@ -42,9 +42,9 @@ jobs:
       - name: PWD
         run: pwd
           
-      - name: Zip
-        run: |
-          cd Test\ Output/Build/Products && zip -r TelnyxVideoUITests.zip *
+#       - name: Zip
+#         run: |
+#           cd Test\ Output/Build/Products && zip -r TelnyxVideoUITests.zip *
 #          cd Test\ Output/Build/Products && zip -r DemoUITests.zip Debug-iphonesimulator DemoAppUITests_iphonesimulator14.4-arm64-x86_64.xctestrun
 
       - name: GCloud Auth
@@ -58,6 +58,7 @@ jobs:
 
       - name: Run UI tests in Firebase Test Lab
         run: |
+          cd Test\ Output/Build/Products && zip -r TelnyxVideoUITests.zip * && \
           gcloud firebase test ios run --test TelnyxVideoUITests.zip \
           --device model=iphonexr,version=13.2,orientation=portrait \
           --device model=iphonexsmax,version=12.1,orientation=portrait \
