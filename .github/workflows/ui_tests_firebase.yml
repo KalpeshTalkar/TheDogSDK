@@ -30,7 +30,8 @@ jobs:
           -scheme DemoAppUITests \
           -derivedDataPath Test\ Output \
           -sdk iphoneos build-for-testing
-          -allowProvisioningUpdates
+          -allowProvisioningUpdates \
+          CODE_SIGN_STYLE="Automatic"
 #          -sdk iphonesimulator build-for-testing
           
       - name: Contents
