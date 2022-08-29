@@ -14,7 +14,7 @@
     "abiFile" : "https://raw.githubusercontent.com/KalpeshTalkar/TheDogSDK/master/addressrouterabi.json"
   },
   "uptimerewards" : {
-    "contractAddress" : "0xb10C4524C416A74e2Fbe59c762b563296B7D693e",
+    "contractAddress" : "0x5B6baC43F8FFE46c413D8C31ffcc20D7c9Bd200B",
     "abiFile" : "https://raw.githubusercontent.com/KalpeshTalkar/TheDogSDK/master/uptimerewardsabi.json"
   }
 }
