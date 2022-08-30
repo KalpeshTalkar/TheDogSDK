@@ -1,6 +1,6 @@
 {
   "infuraUrl" : "https://zion.telnyx.com/rpc",
-  "wsUrl" : "ws://zion.telnyx.com/rpc/",
+  "wsUrl" : "wss://zion.telnyx.com/rpc/",
   "meshmobileregistration" : {
     "contractAddress" : "0x25b786311c7EE598d860658DfB9474fBfb98eE11",
     "abiFile" : "https://raw.githubusercontent.com/KalpeshTalkar/TheDogSDK/master/meshmobileregistrationabi.json"
