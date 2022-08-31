@@ -2,11 +2,11 @@
   "infuraUrl" : "https://zion.telnyx.com/rpc",
   "wsUrl" : "wss://zion.telnyx.com/ws",
   "meshmobileregistration" : {
-    "contractAddress" : "0x25b786311c7EE598d860658DfB9474fBfb98eE11",
+    "contractAddress" : "0x11818203203dc7516a71897390b3Cf506790fd2b",
     "abiFile" : "https://raw.githubusercontent.com/KalpeshTalkar/TheDogSDK/master/meshmobileregistrationabi.json"
   },
   "meshmobile" : {
-    "contractAddress" : "0x99dCf809b018a977BBd8d902CfD06dbBF6353B6a",
+    "contractAddress" : "0xF6ef49C45d586d837bf118fb0b0719a538e87729",
     "abiFile" : "https://raw.githubusercontent.com/KalpeshTalkar/TheDogSDK/master/meshmobileabi.json"
   },
   "addressrouter" : {
@@ -14,7 +14,7 @@
     "abiFile" : "https://raw.githubusercontent.com/KalpeshTalkar/TheDogSDK/master/addressrouterabi.json"
   },
   "uptimerewards" : {
-    "contractAddress" : "0x5B6baC43F8FFE46c413D8C31ffcc20D7c9Bd200B",
+    "contractAddress" : "0xCd81Df736C8128Cae3762DA6397A9Fc1e63Db026",
     "abiFile" : "https://raw.githubusercontent.com/KalpeshTalkar/TheDogSDK/master/uptimerewardsabi.json"
   }
 }
