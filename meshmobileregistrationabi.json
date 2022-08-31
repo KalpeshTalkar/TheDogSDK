@@ -202,6 +202,19 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "bytes32[]",
+        "name": "identifiers",
+        "type": "bytes32[]"
+      }
+    ],
+    "name": "claimManagedDevicesRewards",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "claimRewards",
     "outputs": [],
@@ -252,6 +265,11 @@
             "type": "bytes32"
           },
           {
+            "internalType": "address",
+            "name": "manager",
+            "type": "address"
+          },
+          {
             "internalType": "enum DeviceTypes",
             "name": "deviceType",
             "type": "uint8"
@@ -275,6 +293,30 @@
         "internalType": "struct DeviceInfo",
         "name": "deviceInfo",
         "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "managedDevices",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
       }
     ],
     "stateMutability": "view",
@@ -440,6 +482,11 @@
         "internalType": "bytes32",
         "name": "identifier",
         "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "manager",
+        "type": "address"
       },
       {
         "internalType": "enum DeviceTypes",
@@ -704,6 +751,13 @@
   },
   {
     "inputs": [],
+    "name": "withdrawDeposit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "withdrawDevice",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -712,13 +766,6 @@
   {
     "inputs": [],
     "name": "withdrawFees",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "withdrawProvider",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
